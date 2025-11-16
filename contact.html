@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Farmer Advisory System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-seedling"></i>
+                <span>Krishi Assistant</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="query.html" class="nav-link">Ask Query</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#weather" class="nav-link">Weather</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#market" class="nav-link">Market</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-header">
+                <h1>Contact Us</h1>
+                <p>Get in touch with our team for support and feedback</p>
+            </div>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>We're here to help you with any questions or concerns about our farming advisory services.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Address</h3>
+                                <p>123 Agricultural Center<br>New Delhi, India 110001</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+91 12345 67890</p>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>info@krishiassistant.com</p>
+                                <p>support@krishiassistant.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Working Hours</h3>
+                                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                                <p>Saturday: 9:00 AM - 2:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-section">
+                    <form id="contactForm" class="contact-form">
+                        <h2>Send us a Message</h2>
+                        
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject">
+                                <option value="">Select a subject</option>
+                                <option value="general">General Inquiry</option>
+                                <option value="support">Technical Support</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="suggestion">Suggestion</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Please describe your inquiry or feedback..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                    
+                    <div id="contactMessage" class="contact-message" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3>How do I ask a farming question?</h3>
+                    <p>Simply go to our "Ask Query" page, select the appropriate category (Pest, Crop, Weather, or Market), and type your question. You'll get an instant response.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Is the service free to use?</h3>
+                    <p>Yes, our basic advisory service is completely free for all farmers. We believe in supporting the farming community with accessible information.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>How accurate is the information provided?</h3>
+                    <p>All our information is curated by agricultural experts and based on proven farming practices. However, we recommend consulting with local agricultural officers for specific cases.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>Can I get weather updates for my specific location?</h3>
+                    <p>Currently, we provide general weather information. We're working on location-specific weather updates in future versions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Krishi Assistant</h3>
+                    <p>Empowering farmers with reliable agricultural guidance and support.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="query.html">Ask Query</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +91 12345 67890</p>
+                    <p><i class="fas fa-envelope"></i> info@krishiassistant.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Farmer Advisory System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

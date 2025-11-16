@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Your Query - Farmer Advisory System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-seedling"></i>
+                <span>Krishi Assistant</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="query.html" class="nav-link active">Ask Query</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#weather" class="nav-link">Weather</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#market" class="nav-link">Market</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Query Section -->
+    <section class="query-section">
+        <div class="container">
+            <div class="query-header">
+                <h1>Ask Your Query</h1>
+                <p>Get instant answers to your farming questions</p>
+            </div>
+
+            <div class="query-container">
+                <div class="query-form-section">
+                    <form id="queryForm" class="query-form">
+                        <div class="form-group">
+                            <label for="queryType">Select Query Type:</label>
+                            <select id="queryType" name="queryType" required>
+                                <option value="">Choose a category</option>
+                                <option value="Pest">Pest Control</option>
+                                <option value="Crop">Crop Care</option>
+                                <option value="Weather">Weather Information</option>
+                                <option value="Market">Market Prices</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="question">Your Question:</label>
+                            <textarea id="question" name="question" placeholder="Type your farming question here..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Query
+                        </button>
+                    </form>
+                </div>
+
+                <div class="chat-section">
+                    <div class="chat-header">
+                        <h3>Chat Window</h3>
+                        <button id="clearChat" class="btn-clear">
+                            <i class="fas fa-trash"></i>
+                            Clear Chat
+                        </button>
+                    </div>
+                    <div id="chatWindow" class="chat-window">
+                        <div class="welcome-message">
+                            <div class="bot-message">
+                                <div class="message-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="message-content">
+                                    <p>Welcome to Krishi Assistant! Please select a query type and ask your farming question. I'm here to help you with pest control, crop care, weather information, and market prices.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="loadingIndicator" class="loading-indicator" style="display: none;">
+                        <div class="loading-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <p>Finding answer...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Questions Section -->
+    <section class="quick-questions">
+        <div class="container">
+            <h2>Quick Questions</h2>
+            <div class="quick-questions-grid">
+                <div class="quick-question-card" data-type="Pest" data-question="How to control aphids on tomatoes?">
+                    <i class="fas fa-bug"></i>
+                    <p>How to control aphids on tomatoes?</p>
+                </div>
+                <div class="quick-question-card" data-type="Crop" data-question="When is the best time to plant rice?">
+                    <i class="fas fa-seedling"></i>
+                    <p>When is the best time to plant rice?</p>
+                </div>
+                <div class="quick-question-card" data-type="Weather" data-question="Will it rain this week?">
+                    <i class="fas fa-cloud-rain"></i>
+                    <p>Will it rain this week?</p>
+                </div>
+                <div class="quick-question-card" data-type="Market" data-question="What is the current price of wheat?">
+                    <i class="fas fa-chart-line"></i>
+                    <p>What is the current price of wheat?</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Krishi Assistant</h3>
+                    <p>Empowering farmers with reliable agricultural guidance and support.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="query.html">Ask Query</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +91 12345 67890</p>
+                    <p><i class="fas fa-envelope"></i> info@krishiassistant.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Farmer Advisory System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

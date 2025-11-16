@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Farmer Advisory System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .admin-header {
+            background: var(--primary-green);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-button {
+            background: var(--gray-light);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .tab-button.active {
+            background: var(--primary-green);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .responses-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .responses-table th,
+        .responses-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--gray-light);
+        }
+        
+        .responses-table th {
+            background: var(--gray-light);
+            font-weight: 600;
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+            margin: 0 0.25rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-tabs {
+                flex-direction: column;
+            }
+            
+            .responses-table {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-seedling"></i>
+                <span>Admin Panel</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Back to Site</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1><i class="fas fa-cog"></i> Admin Panel</h1>
+            <p>Manage responses and monitor system activity</p>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalResponses">-</div>
+                <div class="stat-label">Total Responses</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalQueries">-</div>
+                <div class="stat-label">Queries Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="pendingQueries">-</div>
+                <div class="stat-label">Pending Reviews</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="contactMessages">-</div>
+                <div class="stat-label">Contact Messages</div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="admin-tabs">
+            <button class="tab-button active" onclick="showTab('responses')">Manage Responses</button>
+            <button class="tab-button" onclick="showTab('queries')">Farmer Queries</button>
+            <button class="tab-button" onclick="showTab('contacts')">Contact Messages</button>
+            <button class="tab-button" onclick="showTab('add-response')">Add Response</button>
+        </div>
+
+        <!-- Manage Responses Tab -->
+        <div id="responses" class="tab-content active">
+            <h2>Manage Responses</h2>
+            <div class="form-group">
+                <label for="filterCategory">Filter by Category:</label>
+                <select id="filterCategory" onchange="loadResponses()">
+                    <option value="">All Categories</option>
+                    <option value="Pest">Pest Control</option>
+                    <option value="Crop">Crop Care</option>
+                    <option value="Weather">Weather</option>
+                    <option value="Market">Market</option>
+                </select>
+            </div>
+            <div id="responsesTable"></div>
+        </div>
+
+        <!-- Farmer Queries Tab -->
+        <div id="queries" class="tab-content">
+            <h2>Farmer Queries</h2>
+            <p>Review and respond to farmer queries that need expert attention.</p>
+            <div id="queriesTable"></div>
+        </div>
+
+        <!-- Contact Messages Tab -->
+        <div id="contacts" class="tab-content">
+            <h2>Contact Messages</h2>
+            <div id="contactsTable"></div>
+        </div>
+
+        <!-- Add Response Tab -->
+        <div id="add-response" class="tab-content">
+            <h2>Add New Response</h2>
+            <form id="addResponseForm">
+                <div class="form-group">
+                    <label for="newQueryType">Category:</label>
+                    <select id="newQueryType" required>
+                        <option value="">Select Category</option>
+                        <option value="Pest">Pest Control</option>
+                        <option value="Crop">Crop Care</option>
+                        <option value="Weather">Weather</option>
+                        <option value="Market">Market</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newQuestion">Question:</label>
+                    <textarea id="newQuestion" rows="3" required placeholder="Enter the question..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="newAnswer">Answer:</label>
+                    <textarea id="newAnswer" rows="5" required placeholder="Enter the detailed answer..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add Response
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        function showTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Load data for the selected tab
+            switch(tabName) {
+                case 'responses':
+                    loadResponses();
+                    break;
+                case 'queries':
+                    loadQueries();
+                    break;
+                case 'contacts':
+                    loadContacts();
+                    break;
+            }
+        }
+
+        // Load statistics
+        function loadStats() {
+            // This would typically make AJAX calls to get real data
+            document.getElementById('totalResponses').textContent = '25+';
+            document.getElementById('totalQueries').textContent = '12';
+            document.getElementById('pendingQueries').textContent = '3';
+            document.getElementById('contactMessages').textContent = '5';
+        }
+
+        // Load responses
+        function loadResponses() {
+            const category = document.getElementById('filterCategory').value;
+            // This would make an AJAX call to load responses
+            document.getElementById('responsesTable').innerHTML = `
+                <table class="responses-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Category</th>
+                            <th>Question</th>
+                            <th>Answer</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Pest</td>
+                            <td>How to control whiteflies on cotton?</td>
+                            <td>Use neem oil spray or Imidacloprid...</td>
+                            <td>
+                                <button class="btn btn-small btn-secondary">Edit</button>
+                                <button class="btn btn-small btn-clear">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Crop</td>
+                            <td>When is the best time to plant rice?</td>
+                            <td>Kharif season: June-July...</td>
+                            <td>
+                                <button class="btn btn-small btn-secondary">Edit</button>
+                                <button class="btn btn-small btn-clear">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // Load farmer queries
+        function loadQueries() {
+            document.getElementById('queriesTable').innerHTML = `
+                <table class="responses-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Farmer</th>
+                            <th>Category</th>
+                            <th>Question</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Ramesh Kumar</td>
+                            <td>Pest</td>
+                            <td>My wheat crop has yellow rust, what should I do?</td>
+                            <td>Pending</td>
+                            <td>
+                                <button class="btn btn-small btn-primary">Respond</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // Load contact messages
+        function loadContacts() {
+            document.getElementById('contactsTable').innerHTML = `
+                <table class="responses-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Phone</th>
+                            <th>Subject</th>
+                            <th>Message</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Suresh Patel</td>
+                            <td>9876543210</td>
+                            <td>General Inquiry</td>
+                            <td>Need help with organic farming...</td>
+                            <td>New</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // Handle add response form
+        document.getElementById('addResponseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const queryType = document.getElementById('newQueryType').value;
+            const question = document.getElementById('newQuestion').value;
+            const answer = document.getElementById('newAnswer').value;
+            
+            // This would make an AJAX call to add the response
+            alert('Response added successfully!');
+            this.reset();
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadStats();
+            loadResponses();
+        });
+    </script>
+</body>
+</html>

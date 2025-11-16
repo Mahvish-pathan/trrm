@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Advisory System - Your Digital Krishi Assistant</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-seedling"></i>
+                <span>Krishi Assistant</span>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="query.html" class="nav-link">Ask Query</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#weather" class="nav-link">Weather</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#market" class="nav-link">Market</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Digital Krishi Assistant</h1>
+            <p>Reliable Guidance Anytime</p>
+            <div class="hero-buttons">
+                <a href="query.html" class="btn btn-primary">
+                    <i class="fas fa-comments"></i>
+                    Ask a Query
+                </a>
+                <a href="#features" class="btn btn-secondary">
+                    <i class="fas fa-info-circle"></i>
+                    Learn More
+                </a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <i class="fas fa-tractor hero-icon"></i>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2>How We Help Farmers</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Pest Control</h3>
+                    <p>Get expert advice on identifying and controlling pests that affect your crops.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Crop Care</h3>
+                    <p>Learn best practices for crop cultivation, fertilization, and harvesting.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-cloud-sun"></i>
+                    </div>
+                    <h3>Weather Updates</h3>
+                    <p>Stay informed about weather conditions and plan your farming activities accordingly.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Market Prices</h3>
+                    <p>Get current market prices and trends to make informed selling decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weather Section -->
+    <section id="weather" class="weather-section">
+        <div class="container">
+            <h2>Weather Information</h2>
+            <div class="weather-card">
+                <div class="weather-info">
+                    <h3>Current Weather</h3>
+                    <div id="weather-data">
+                        <p>Loading weather information...</p>
+                    </div>
+                </div>
+                <div class="weather-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Market Section -->
+    <section id="market" class="market-section">
+        <div class="container">
+            <h2>Market Information</h2>
+            <div class="market-grid">
+                <div class="market-card">
+                    <h3>Rice</h3>
+                    <p class="price">₹2,500/quintal</p>
+                    <span class="trend up">↑ 5%</span>
+                </div>
+                <div class="market-card">
+                    <h3>Wheat</h3>
+                    <p class="price">₹2,200/quintal</p>
+                    <span class="trend down">↓ 2%</span>
+                </div>
+                <div class="market-card">
+                    <h3>Cotton</h3>
+                    <p class="price">₹6,800/quintal</p>
+                    <span class="trend up">↑ 8%</span>
+                </div>
+                <div class="market-card">
+                    <h3>Sugarcane</h3>
+                    <p class="price">₹350/quintal</p>
+                    <span class="trend stable">→ 0%</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Krishi Assistant</h3>
+                    <p>Empowering farmers with reliable agricultural guidance and support.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="query.html">Ask Query</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> +91 12345 67890</p>
+                    <p><i class="fas fa-envelope"></i> info@krishiassistant.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Farmer Advisory System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
